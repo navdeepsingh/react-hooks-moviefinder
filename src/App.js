@@ -13,18 +13,28 @@ const App = () => {
           return response.json()
         })
         .then(result => {
-          //movies = result.Search;
-          setMovies(result.Search)
+          let uniqueResults = getUnique(result.Search)
+          setMovies(uniqueResults)
           setLoading(false)
-
-          //console.log(movies.Search)
         });
 
     } catch (e) {
       if (e) {
-        console.log(e.message, 'Try updating the API key in App.js')
+        console.log(e.message, 'Try updating the API key')
       }
     }
+  }
+
+  const getUnique = (arr) => {
+    let uniqueArr = [];
+    let uniqueActualArr = [];
+    arr.map(arrItem => {
+      if (!uniqueArr.includes(arrItem.imdbID)) {
+        uniqueArr.push(arrItem.imdbID)
+        uniqueActualArr.push(arrItem)
+      }
+    });
+    return uniqueActualArr;
   }
 
   useEffect(() => {

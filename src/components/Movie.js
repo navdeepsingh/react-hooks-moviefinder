@@ -1,14 +1,17 @@
 import React from "react";
+import MovieDetails from "./MovieDetails";
 
 const Movie = ({ info }) => {
   return (
     <React.Fragment>
       <div className="d-flex justify-content-between">
         <div>
-          <h1>{info.Title}</h1>
-          <MovieDetails />
+          <h2>{info.Title}</h2>
+          <MovieDetails detail={info} />
         </div>
-        <img src={info.Poster} width="100" />
+        <a href={'https://www.imdb.com/title/' + info.imdbID} target="_blank">
+          <img src={info.Poster} width="100" />
+        </a>
       </div>
     </React.Fragment>
   )
