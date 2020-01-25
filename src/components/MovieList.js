@@ -1,4 +1,5 @@
 import React from "react";
+import Movie from "./Movie";
 
 const MovieList = ({ movies }) => {
   return (
@@ -9,13 +10,10 @@ const MovieList = ({ movies }) => {
           <h1 className="text-slaned ">Movie List</h1>
         </div>
 
-        <div className="row movie-list">
+        <div className="d-flex flex-column">
           {
             movies.map(movie => {
-              return <div key={movie.imdbID}>
-                {movie.Title}
-                <img src={movie.Poster} />
-              </div>
+              return <Movie key={movie.imdbID} info={movie} />
             })
           }
         </div>
