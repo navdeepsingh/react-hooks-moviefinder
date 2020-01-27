@@ -4,18 +4,27 @@ import MovieList from "./components/MovieList";
 const App = () => {
   const [loading, setLoading] = useState(1);
   const [movies, setMovies] = useState([]);
-  const api = 'http://www.omdbapi.com/?apikey=8dae9e85&type=movie&s=Mission';
+  const [error, setError] = useState(0);
+  const api = 'http://www.omdbapi.com/?apikey=8dae9e85&type=movie&s=';
 
-  const fetchMovie = () => {
+  const fetchMovie = (search) => {
     try {
-      fetch(api)
+      fetch(api + search)
         .then(response => {
           return response.json()
         })
         .then(result => {
-          let uniqueResults = getUnique(result.Search)
-          setMovies(uniqueResults)
-          setLoading(false)
+
+          try {
+            let uniqueResults = getUnique(result.Search)
+            setMovies(uniqueResults)
+            setLoading(false)
+            setError(false)
+
+          } catch (e) {
+            setError(true)
+            console.log('Error: ->', e.message)
+          }
         });
     } catch (e) {
       if (e) {
@@ -36,8 +45,12 @@ const App = () => {
     return uniqueActualArr;
   }
 
+  const searchHandler = (e) => {
+    fetchMovie(e.target.value);
+  }
+
   useEffect(() => {
-    fetchMovie();
+    fetchMovie('Mission');
   }, []);
 
 
@@ -48,7 +61,7 @@ const App = () => {
           <h1 className="text-center">
             ...fetching movies
           </h1> :
-          <MovieList movies={movies} />
+          <MovieList movies={movies} searchHandler={searchHandler} error={error} />
       }
     </>
   )
