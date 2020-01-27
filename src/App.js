@@ -17,7 +17,6 @@ const App = () => {
           setMovies(uniqueResults)
           setLoading(false)
         });
-
     } catch (e) {
       if (e) {
         console.log(e.message, 'Try updating the API key')
@@ -47,7 +46,7 @@ const App = () => {
       {
         loading ?
           <h1 className="text-center">
-            ...fetching movie
+            ...fetching movies
           </h1> :
           <MovieList movies={movies} />
       }
