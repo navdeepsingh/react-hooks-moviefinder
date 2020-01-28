@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const MovieContext = React.createContext()
 
@@ -47,12 +47,14 @@ const MovieProvider = (props) => {
   }
 
   const searchHandler = (e) => {
+    console.log(e.target.value);
+
     fetchMovie(e.target.value);
   }
 
   useEffect(() => {
     fetchMovie('Mission')
-  })
+  }, [])
 
   return (
     <MovieContext.Provider value={{
