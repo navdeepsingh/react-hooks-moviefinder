@@ -17,7 +17,7 @@ const MovieList = () => {
             <div className=" d-flex d-flex justify-content-center mb-3">
               <h1 className="text-slaned ">Movie List</h1>
             </div>
-            <div className="d-flex flex-column">
+            <div className="movies-list d-flex flex-column">
               {
                 movies.map((movie, index) => {
                   return <Movie key={index} info={movie} />
