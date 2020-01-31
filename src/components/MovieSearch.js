@@ -3,9 +3,6 @@ import React, { useState } from "react";
 const MovieSearch = ({ searchHandler }) => {
   const searchInput = React.createRef();
 
-
-
-
   return (
     <div className="container d-flex justify-content-center my-5">
       <form className="form-inline" onSubmit={(e) => handleSubmit(e)}>
