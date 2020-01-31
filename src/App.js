@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MovieList from "./components/MovieList";
+import "./App.css";
 
 const App = () => {
   const [loading, setLoading] = useState(1);

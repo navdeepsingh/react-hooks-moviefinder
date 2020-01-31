@@ -14,7 +14,7 @@ const MovieList = ({ movies, searchHandler, error }) => {
             <div className=" d-flex d-flex justify-content-center mb-3">
               <h1 className="text-slaned ">Movie List</h1>
             </div>
-            <div className="d-flex flex-column">
+            <div className="movies-list d-flex flex-column">
               {
                 movies.map(movie => {
                   return <Movie key={movie.imdbID} info={movie} />
