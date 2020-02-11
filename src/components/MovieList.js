@@ -2,26 +2,25 @@ import React from "react";
 import Movie from "./Movie";
 import MovieSearch from "./MovieSearch";
 
-const MovieList = ({ movies, searchHandler, error }) => {
+const MovieList = ({ movies }) => {
   return (
     <>
-      <MovieSearch searchHandler={searchHandler}></MovieSearch>
+
       {
-        error ?
-          <div className="text-center"><h2>💩 Not Found</h2></div>
-          :
-          <div className="container my-5 home-button">
-            <div className=" d-flex d-flex justify-content-center mb-3">
-              <h1 className="text-slaned ">Movie List</h1>
-            </div>
-            <div className="movies-list d-flex flex-column">
-              {
-                movies.map(movie => {
-                  return <Movie key={movie.imdbID} info={movie} />
-                })
-              }
-            </div>
+
+        <div className="container my-5 home-button">
+          <div className=" d-flex d-flex justify-content-center mb-3">
+            <h1 className="text-slaned ">Movie List</h1>
           </div>
+          <div className="movies-list d-flex flex-column">
+            {movies && movies.length
+              ? movies.map(movie => {
+                return <Movie key={movie.imdbID} info={movie} />
+              })
+              : <h2 className="text-center">💩 Not Found</h2>
+            }
+          </div>
+        </div>
       }
     </>
   )

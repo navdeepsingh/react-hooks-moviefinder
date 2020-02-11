@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-const MovieSearch = ({ searchHandler }) => {
+import { connect } from 'react-redux'
+import { handleSearch } from '../redux/actions'
+
+const MovieSearch = ({ props }) => {
   const searchInput = React.createRef();
 
-
-
+  const searchHandler = () => {
+    props.handleSearch(searchInput.current.value)
+  }
 
   return (
     <div className="container d-flex justify-content-center my-5">
@@ -16,4 +20,7 @@ const MovieSearch = ({ searchHandler }) => {
   )
 }
 
-export default MovieSearch;
+export default connect(
+  null,
+  { handleSearch }
+)(MovieSearch)
