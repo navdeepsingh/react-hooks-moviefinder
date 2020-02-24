@@ -7,6 +7,8 @@ const MovieSearch = ({ props }) => {
   const searchInput = React.createRef();
 
   const searchHandler = () => {
+    console.log(searchInput.current.value);
+
     props.handleSearch(searchInput.current.value)
   }
 
