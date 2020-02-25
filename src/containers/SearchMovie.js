@@ -3,15 +3,14 @@ import { handleSearch } from '../actions'
 import MovieSearch from '../components/MovieSearch'
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps.children);
   return {
-    movies: 'test'
+    movies: state.movies
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClick: () => {
+    searchHandler: () => {
       dispatch(handleSearch(ownProps.text))
     }
   }
