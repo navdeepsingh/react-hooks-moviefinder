@@ -3,10 +3,32 @@ const movies = (state = [], action) => {
     console.log('REDUCER ACTIVATED: ', action);
     return [
       ...state,
-      { "Title": "Rear Window", "Year": "1954", "imdbID": "tt0047396", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BNGUxYWM3M2MtMGM3Mi00ZmRiLWE0NGQtZjE5ODI2OTJhNTU0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg" }, { "Title": "Secret Window", "Year": "2004", "imdbID": "tt0363988", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BNmI5MWNlMjYtZTAxNy00N2Q3LTkwZDgtMWRjOWQ1ZjJiN2Y4XkEyXkFqcGdeQXVyNDQ2MTMzODA@._V1_SX300.jpg" }, { "Title": "The 100 Year-Old Man Who Climbed Out the Window and Disappeared", "Year": "2013", "imdbID": "tt2113681", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BNDUyMzU5MTk5MF5BMl5BanBnXkFtZTgwNjcxNDQxNTE@._V1_SX300.jpg" }, { "Title": "The Woman in the Window", "Year": "1944", "imdbID": "tt0037469", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BMGUxNTljMzUtNjA1Zi00YTE3LTlmMWMtNzlmNjEyM2Q1NWMxL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg" }, { "Title": "The Bedroom Window", "Year": "1987", "imdbID": "tt0092627", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BOWQ4OWUxN2UtNTVhMy00Y2E3LTk0NTYtMjRiNzZjYjc1OTUxXkEyXkFqcGdeQXVyNjU0NTI0Nw@@._V1_SX300.jpg" }, { "Title": "Rear Window", "Year": "1998", "imdbID": "tt0166322", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BMjA2NTU1MzUzOV5BMl5BanBnXkFtZTcwNDIwNDMzMQ@@._V1_SX300.jpg" }, { "Title": "The Window", "Year": "1949", "imdbID": "tt0042046", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BZDUxOTIyZWMtMDM1MS00ZWE2LTg0MDktZjFmYmNlM2I4MmRiXkEyXkFqcGdeQXVyMTYzMTY1MjQ@._V1_SX300.jpg" }, { "Title": "The Witch in the Window", "Year": "2018", "imdbID": "tt5936492", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BMTY0Nzg2Mzg2OV5BMl5BanBnXkFtZTgwNjE1NDM4NTM@._V1_SX300.jpg" }, { "Title": "Window Water Baby Moving", "Year": "1959", "imdbID": "tt0138941", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BN2IyYzhlYWUtNTU3ZC00NWJkLThiMDktZTNiMTcyM2MxMTZhXkEyXkFqcGdeQXVyMjYxMzY2NDk@._V1_SX300.jpg" }, { "Title": "The Neighbors' Window", "Year": "2019", "imdbID": "tt8163822", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BZjEyNjgxOGUtMmEwYi00ZjQxLWI2NGMtNDNmY2NiODk3NmU3XkEyXkFqcGdeQXVyOTgwNzIyOTU@._V1_SX300.jpg" }
+      fetchMovie(action.text)
+        .then(result => result)
+        .catch('Error in fetching request')
     ]
   }
   return state;
+}
+
+const api = 'http://www.omdbapi.com/?apikey=8dae9e85&type=movie&s=';
+const fetchMovie = async (search) => {
+  let response = await fetch(api + search);
+  let responseJson = await response.json()
+  let uniqueResult = await getUnique(responseJson.Search)
+  return uniqueResult;
+}
+
+const getUnique = async (arr) => {
+  let uniqueArr = [];
+  let uniqueActualArr = [];
+  arr.map(arrItem => {
+    if (!uniqueArr.includes(arrItem.imdbID)) {
+      uniqueArr.push(arrItem.imdbID)
+      uniqueActualArr.push(arrItem)
+    }
+  });
+  return uniqueActualArr;
 }
 
 export default movies;
