@@ -30,6 +30,6 @@ export function moviesApi(state = initialState, action) {
   }
 }
 
-export const getMovies = state => state.products;
-export const getMoviesPending = state => state.pending;
-export const getMoviesError = state => state.error;
+export const getMovies = (state = initialState) => state.movies;
+export const getMoviesPending = (state = initialState) => state.pending;
+export const getMoviesError = (state = initialState) => state.error;

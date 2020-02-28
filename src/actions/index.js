@@ -17,6 +17,7 @@ export const fetchMoviesSuccess = movies => ({
   movies
 })
 
-export const fetchMoviesPending = () => ({
-  type: FETCH_MOVIES_PENDING
+export const fetchMoviesError = error => ({
+  type: FETCH_MOVIES_ERROR,
+  error
 })
