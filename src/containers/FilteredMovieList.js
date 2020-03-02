@@ -1,18 +1,18 @@
 import { connect } from "react-redux";
-import { bindActionCreators } from 'redux';
 import MovieList from '../components/MovieList'
 import fetchMoviesAction from '../actions/fetchMovies'
-import { getMoviesPending, getMovies, getMoviesError } from '../reducers/moviesApi'
 
 const mapStateToProps = state => ({
-  error: getMoviesError(state),
-  movies: getMovies(state),
-  pending: getMoviesPending(state)
+  error: state.error,
+  movies: state.movies,
+  pending: state.pending
 })
 
-const mapDispatchtoProps = dispatch => bindActionCreators({
-  fetchMovies: fetchMoviesAction
-}, dispatch)
+const mapDispatchtoProps = dispatch => {
+  return {
+    fetchMovies: () => dispatch(fetchMoviesAction())
+  }
+}
 
 export default connect(
   mapStateToProps,

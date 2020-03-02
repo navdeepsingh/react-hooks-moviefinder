@@ -1,9 +1,9 @@
 import { fetchMoviesPending, fetchMoviesSuccess, fetchMoviesError } from './'
 
-const fetchMovies = () => {
+const fetchMovies = (text) => {
   return dispatch => {
     dispatch(fetchMoviesPending());
-    fetchMovie()
+    fetchMovie(text)
       .then(res => {
         if (res.length) {
           dispatch(fetchMoviesSuccess(res))

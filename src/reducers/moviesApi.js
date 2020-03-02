@@ -6,7 +6,9 @@ const initialState = {
   error: null
 }
 
-export function moviesApi(state = initialState, action) {
+export default function moviesApi(state = initialState, action) {
+  console.log(action);
+
   switch (action.type) {
     case FETCH_MOVIES_PENDING:
       return {
@@ -14,11 +16,13 @@ export function moviesApi(state = initialState, action) {
         pending: true
       }
     case FETCH_MOVIES_SUCCESS:
-      return {
+      return [
         ...state,
-        pending: false,
-        movies: action.payload
-      }
+        {
+          pending: false,
+          movies: action.movies
+        }
+      ]
     case FETCH_MOVIES_ERROR:
       return {
         ...state,
@@ -30,6 +34,6 @@ export function moviesApi(state = initialState, action) {
   }
 }
 
-export const getMovies = (state = initialState) => state.movies;
-export const getMoviesPending = (state = initialState) => state.pending;
-export const getMoviesError = (state = initialState) => state.error;
+// export const getMovies = (state = initialState) => state.movies;
+// export const getMoviesPending = (state = initialState) => state.pending;
+// export const getMoviesError = (state = initialState) => state.error;

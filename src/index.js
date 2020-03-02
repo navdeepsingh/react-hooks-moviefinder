@@ -11,7 +11,7 @@ const middlewares = [thunk];
 const store = createStore(rootReducer, applyMiddleware(...middlewares))
 
 ReactDOM.render(
-  <Provider store={store} >
+  <Provider store={store}>
     <App />
   </Provider>
   , document.querySelector("#root"));

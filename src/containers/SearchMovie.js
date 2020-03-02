@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { handleSearch } from '../actions'
+import fetchMovies from '../actions/fetchMovies'
 import MovieSearch from '../components/MovieSearch'
 
 const mapStateToProps = (state) => {
@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   searchHandler: text => {
-    dispatch(handleSearch(text))
+    dispatch(fetchMovies(text))
   }
 })
 
