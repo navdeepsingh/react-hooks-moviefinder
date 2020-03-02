@@ -10,8 +10,8 @@ const fetchMovies = (text) => {
           return res;
         }
       })
-      .catch(error => {
-        dispatch(fetchMoviesError(error));
+      .catch(() => {
+        dispatch(fetchMoviesError(true));
       })
 
   }
