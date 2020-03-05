@@ -19,7 +19,7 @@ const fetchMovies = (text) => {
   }
 }
 
-const api = 'http://www.omdbapi.com/?apikey=8dae9e85&type=movie&s=';
+const api = 'https://www.omdbapi.com/?apikey=8dae9e85&type=movie&s=';
 const fetchMovie = async (search = 'Mission') => {
   let response = await fetch(api + search);
   let responseJson = await response.json()
