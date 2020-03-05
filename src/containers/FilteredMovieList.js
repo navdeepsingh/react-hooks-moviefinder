@@ -3,9 +3,9 @@ import MovieList from '../components/MovieList'
 import fetchMoviesAction from '../actions/fetchMovies'
 
 const mapStateToProps = state => ({
-  error: state.movies.error,
-  movies: state.movies.movies,
-  pending: state.movies.pending
+  error: state.global.error,
+  movies: state.global.movies,
+  pending: state.global.pending
 })
 
 const mapDispatchtoProps = dispatch => {

@@ -20,6 +20,7 @@ const movies = (state = initialState, action) => {
     case FETCH_MOVIES_SUCCESS:
       return {
         ...state,
+        error: false,
         pending: false,
         movies: action.movies
       }
