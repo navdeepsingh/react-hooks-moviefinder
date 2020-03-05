@@ -1,4 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require("path")
+
 module.exports = {
   // Entry Point
   entry: {
@@ -7,6 +9,7 @@ module.exports = {
 
   // Output
   output: {
+    path: path.join(__dirname, 'public'),
     filename: "build.js"
   },
 
