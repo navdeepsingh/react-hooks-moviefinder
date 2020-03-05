@@ -8,6 +8,8 @@ const fetchMovies = (text) => {
         if (res.length) {
           dispatch(fetchMoviesSuccess(res))
           return res;
+        } else {
+          dispatch(fetchMoviesError(true));
         }
       })
       .catch(() => {

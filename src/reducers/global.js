@@ -10,7 +10,8 @@ const movies = (state = initialState, action) => {
   switch (action.type) {
     case HANDLE_SEARCH:
       return {
-        ...state
+        ...state,
+        movies: action.movies
       }
     case FETCH_MOVIES_PENDING:
       return {

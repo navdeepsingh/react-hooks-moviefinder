@@ -16,7 +16,7 @@ class MovieList extends React.Component {
           ? <div className="loading"></div>
           : <div className="container my-5 home-button">
               <div className=" d-flex d-flex justify-content-center mb-3">
-                <h1 className="text-slaned ">Movie List</h1>
+                <h2 className="text-slaned ">Movie List</h2>
               </div>
               <div className="movies-list d-flex flex-column">
                 {this.props.movies && this.props.movies.length
@@ -27,9 +27,7 @@ class MovieList extends React.Component {
                 }
               </div>
             </div>
-          
       }
-
       </>
     )
   }

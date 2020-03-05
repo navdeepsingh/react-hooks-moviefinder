@@ -4,10 +4,13 @@ const MovieSearch = ({ movies, searchHandler }) => {
   const searchInput = React.createRef();
 
   return (
-    <div className="container d-flex justify-content-center my-5" >
-      {movies}
+    <>
+    <div className="container d-flex justify-content-center mt-5">
+    <h1>Movie Finder</h1>
+    </div>
+    <div className="container d-flex justify-content-center mb-5 mt-2" >
       <form className="form-inline" onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor="search" >Search:</label>
+        <label htmlFor="search" >Search:&nbsp;</label>
         <input
           ref={searchInput}
           onChange={() => searchHandler(searchInput.current.value)}
@@ -19,6 +22,7 @@ const MovieSearch = ({ movies, searchHandler }) => {
         />
       </form>
     </div>
+    </>
   )
 }
 
