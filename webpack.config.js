@@ -7,29 +7,40 @@ module.exports = {
 
   // Output
   output: {
-    filename: "build.js"
+    filename: "build.js",
   },
 
   // How to resolve encountered imports
   module: {
     rules: [
+      //JS|JSX LOADER
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use: "babel-loader",
       },
+      //HTML LOADER
       {
         test: /\.html$/,
-        use: "html-loader"
-      }
-    ]
+        use: "html-loader",
+      },
+      //CSS LOADER
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        //IMAGE LOADER
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "file-loader",
+      },
+    ],
   },
 
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
-      filename: "./index.html"
-    })
-  ]
-
-}
+      filename: "./index.html",
+    }),
+  ],
+};
